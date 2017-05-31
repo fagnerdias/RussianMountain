@@ -71,16 +71,19 @@ public class RussianMountainSemaphore extends Thread {
 			semaforo.acquire();
 			System.out.println("pessoas entrando no carro");
 			load();
+			if(this.cont < 10){
+				wait();
+			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			System.out.println("carro em movimento");
+			/*System.out.println("carro em movimento");
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
+			}*/
 			unload();
 			semaforo.release();
 			
