@@ -23,22 +23,26 @@ public class Test extends Thread {
 	
 	public void board(){
 		try{
+			System.out.println("Passageiro adicionado no carro");
 			this.trem.add(this);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	public void unboard(){
-		
+		System.out.println("esvasiando o carro");
+		this.trem.clear();
 	}
 	public void load(){
 		try{
+			System.out.println("carro em movimento");
 			Thread.sleep(5000);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	public void unload(){
+		unboard();
 		for(int i =0; i < 30; i++){
 			this.andando.release();
 		}
@@ -48,7 +52,7 @@ public class Test extends Thread {
 		while(true){
 			try{
 				this.passageiro.acquire();
-				//board();
+				board();
 				this.mutex.acquire();
 				Npass++;
 				if(Npass == 30){
