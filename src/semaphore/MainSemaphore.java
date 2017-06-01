@@ -8,14 +8,15 @@ public class MainSemaphore {
 			int semNumber = 10;
 			int numberPeoplo = 30;
 			
-			/*Semaphore semaforo = new Semaphore(semNumber);
+			Semaphore entrada = new Semaphore(10);
+			Semaphore saida = new Semaphore(10);
 			RussianMountainSemaphore[] person = new RussianMountainSemaphore[numberPeoplo];
 			for(int i =0; i < numberPeoplo; i++){
-				person[i] = new RussianMountainSemaphore(i, semaforo);
+				person[i] = new RussianMountainSemaphore(i, entrada, saida);
 				person[i].start();
-			}*/
+			}
 			
-			Semaphore entrada = new Semaphore(1);
+			/*Semaphore entrada = new Semaphore(1);
 			Semaphore saida = new Semaphore(1);
 			
 			CarBuffer buffer = new CarBuffer(30,10,entrada,saida);
@@ -24,7 +25,7 @@ public class MainSemaphore {
 			for(int i =0; i< 30; i++){
 				test[i] = new Pessoa();
 				test[i].start();
-			}
+			}*/
 	}
 
 }

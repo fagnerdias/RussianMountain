@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.concurrent.Semaphore;
 
 public class Test extends Thread {
-	Semaphore passageiro;
-	Semaphore carrinho;
-	Semaphore andando;
-	Semaphore mutex;
-	int Npass = 0;
-	List<Test> trem;
+	static Semaphore passageiro;
+	static Semaphore carrinho;
+	static Semaphore andando;
+	static Semaphore mutex;
+	static int Npass = 0;
+	static List<Test> trem;
 	
 	
 	public Test(){
@@ -55,6 +55,7 @@ public class Test extends Thread {
 				board();
 				this.mutex.acquire();
 				Npass++;
+				System.out.println(Npass);
 				if(Npass == 30){
 					this.carrinho.release();
 					this.andando.acquire();
@@ -73,7 +74,9 @@ public class Test extends Thread {
 		while(true){
 			try{
 				this.carrinho.acquire();
+				System.out.println("test");
 				load();
+				System.out.println("test");
 				unload();
 				this.passageiro.release();
 				
@@ -81,5 +84,11 @@ public class Test extends Thread {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void run(){
+			passageiro();
+			carrinho();
+		
 	}
 }
