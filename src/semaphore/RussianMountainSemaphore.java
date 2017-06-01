@@ -64,7 +64,7 @@ public class RussianMountainSemaphore extends Thread {
 	}
 	
 	private void load(){
-		System.out.println("esvasiando o carro");
+		System.out.println("permitida a entrada de passageiros");
 		board();
 		print();
 		
